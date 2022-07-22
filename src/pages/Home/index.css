@@ -1,0 +1,7 @@
+.homepage {
+  width: 80%;
+  height: calc(100% - 70px);
+  margin: 0 auto;
+  padding: 24px 10%;
+  overflow-y: scroll;
+}

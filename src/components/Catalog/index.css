@@ -1,0 +1,75 @@
+.catalog {
+  padding: 16px 0 16px 16px;
+  border-right: 1px solid #777d841a;
+  width: 20vw;
+}
+
+.top-arrow {
+  width: 0;
+  height: 0;
+  border-bottom: 10px solid #ccc;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+}
+.catalog-title {
+  cursor: pointer;
+  line-height: 3rem;
+  transition: all 0.3s;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC,
+    Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Helvetica, Arial,
+    sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+}
+
+.active {
+  background-image: linear-gradient(
+    135deg,
+    #fff,
+    var(--primary--color--transparent),
+    var(--primary--color--lighter),
+    var(--primary--color--light)
+  );
+  border-right: 2px solid var(--primary--color);
+}
+
+.catalog-title:hover {
+  color: var(--primary--color);
+}
+
+.title-level1 {
+  color: #000;
+  font-size: 1.2rem;
+  padding-left: 1rem;
+  font-weight: bolder;
+}
+
+.title-level2 {
+  color: #333;
+  font-size: 1rem;
+  padding-left: 1rem;
+  font-weight: bold;
+}
+
+.title-level3 {
+  color: #666;
+  font-size: 1rem;
+  padding-left: 1.5rem;
+  font-weight: normal;
+}
+
+.title-level4 {
+  color: #999;
+  font-size: 0.88rem;
+  padding-left: 2rem;
+}
+
+.title-level5 {
+  color: #aaa;
+  font-size: 0.88rem;
+  padding-left: 2.5rem;
+}
+
+.title-level6 {
+  color: #bbb;
+  font-size: 0.88rem;
+  padding-left: 3rem;
+}
