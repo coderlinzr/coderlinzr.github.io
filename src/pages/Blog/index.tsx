@@ -4,7 +4,7 @@ import "./index.css";
 import { useContext, useState } from "react";
 import { useMount } from "react-use";
 import RootStore from "../../store/root";
-import {Catalog} from "../../components";
+import { Catalog } from "../../components";
 import ReactMarkdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
@@ -16,7 +16,7 @@ const Blog = () => {
   // 存储博文内容
   const [content, setContent] = useState<string>("");
 
-  const changeCurrentArticle = async (url: string) => {
+  const changeCurrentArticle = async (url: any) => {
     const res = await fetch(url);
     const content = await res.text();
     setContent(content);
@@ -34,8 +34,31 @@ const Blog = () => {
     // // 文件目录在 public/static/test.md 这里不需要写 public 因为打包之后没有此目录。
     // xmlhttp.open("GET", "/docs/test.md", true);
     // xmlhttp.send();
-    changeCurrentArticle(root.blogUrl);
+    changeCurrentArticle(root.blogUrl || localStorage.getItem("blogUrl"));
   });
+
+  // 复制代码
+  const copyCode = (text: any) => {
+    navigator.clipboard.writeText(text).then((res) => {
+      // let element = document.getElementById(text);
+      // setOpacity(element);
+      // setTimeout(() => {
+      //   resetOpacity(element);
+      // }, 1500)
+      const content = document.createElement("div");
+      content.classList.add("success-icon-content");
+      const icon = document.createElement("div");
+      icon.classList.add("success-icon");
+      content.appendChild(icon);
+      const message = document.createElement("div");
+      message.classList.add("message");
+      message.appendChild(content);
+      const info = document.createElement("span");
+      info.innerText = "复制成功！";
+      message.appendChild(info);
+      document.body.appendChild(message);
+    });
+  };
 
   return (
     <div className="blog">
@@ -50,13 +73,18 @@ const Blog = () => {
             code({ node, inline, className, children, ...props }) {
               const match = /language-(\w+)/.exec(className || "");
               return !inline && match ? (
-                <SyntaxHighlighter
-                  children={String(children).replace(/\n$/, "")}
-                  style={atomOneDark}
-                  language={match[1]}
-                  PreTag="div"
-                  {...props}
-                />
+                <div className="code-content">
+                  <div className="copy" onClick={() => copyCode(children[0])}>
+                    复制代码
+                  </div>
+                  <SyntaxHighlighter
+                    children={String(children).replace(/\n$/, "")}
+                    style={atomOneDark}
+                    language={match[1]}
+                    PreTag="div"
+                    {...props}
+                  />
+                </div>
               ) : (
                 <code className={className} {...props}>
                   {children}

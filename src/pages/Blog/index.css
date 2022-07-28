@@ -2,17 +2,84 @@
   height: calc(100% - 70px);
 }
 .blog .content-box {
-  width: 100%;
+  width: 80%;
   height: 100%;
+  margin: 0 auto;
   display: flex;
   flex-direction: row;
+  border-radius: 4px;
 }
 
 .blog .content-box .markdown-body {
   box-sizing: border-box;
-  height: 100%;
-  width: 80vw;
+  height: 95%;
+  width: 76%;
   overflow-y: scroll;
-  margin: 0 auto;
+  margin: 16px auto 0;
   padding: 45px 5vw;
+}
+
+.blog .content-box .code-content {
+  position: relative;
+}
+
+.blog .content-box .copy {
+  color: #ffffffcf;
+  position: absolute;
+  cursor: pointer;
+  z-index: 1;
+  right: 0;
+  top: 0;
+}
+
+.message {
+  padding: 8px;
+  font-size: 14px;
+  position: fixed;
+  top: 16px;
+  left: calc(50% - 60px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12),
+    0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+
+  animation-name: MessageMoveOut;
+  animation-duration: 3s;
+  opacity: 0;
+}
+
+@keyframes MessageMoveOut {
+  0% {
+    opacity: 1;
+  }
+
+  75% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.success-icon-content {
+  /* padding: 4px; */
+  width: 16px;
+  height: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: #52c41a;
+  margin-right: 8px;
+}
+
+.success-icon-content .success-icon {
+  width: 5px;
+  height: 10px;
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  transform: rotate(40deg);
 }

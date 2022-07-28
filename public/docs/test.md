@@ -1,6 +1,8 @@
-<!-- 解析 markdown 文件 到 个人博客搭建
+<h1> 解析 markdown 文件到个人博客搭建 </h1>
 
-安装
+
+
+<!-- 安装
 可以参考[react-markdown官方文档](https://github.com/remarkjs/react-markdown) <br/>
 可以参考[github-markdown-css官方文档](https://github.com/sindresorhus/github-markdown-css) github md样式 <br/>
 使用

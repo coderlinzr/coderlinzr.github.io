@@ -13,10 +13,11 @@ const Card = (props: any) => {
       className="card-box"
       onClick={() => {
         root.blogUrl = path;
+        localStorage.setItem('blogUrl', path);
         navigate(`/blog/${index}`);
       }}>
       <div className="left-content">
-        <div className="card-title">这里是标题{title}</div>
+        <div className="card-title">{title}</div>
         <div className="card-sub-line">
           <div className="date">日期：{date}</div>
           <div className="notes">标签：{tag}</div>
