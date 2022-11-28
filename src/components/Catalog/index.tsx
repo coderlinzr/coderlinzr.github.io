@@ -113,7 +113,7 @@ const Catalog = (props: Props) => {
                   setSelectedMenuId(`${item.listNo}-${item.offsetTop}`);
                   safeScrollTo(
                     document.getElementsByClassName("markdown-body")[0],
-                    item.offsetTop && item.offsetTop - 70
+                    item.offsetTop && item.offsetTop - 96
                   );
                 }}>
                 {item.title}

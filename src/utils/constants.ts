@@ -12,10 +12,4 @@ export const CONTENTS: Array<Content | {}> = [
     tag: "JavaScript",
     path: "/docs/test.md",
   },
-  {
-    title: "ceshi2",
-    date: "2022-07-01",
-    tag: "JavaScript",
-    path: "/docs/test2.md",
-  },
 ];

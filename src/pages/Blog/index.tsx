@@ -6,7 +6,7 @@ import { useMount } from "react-use";
 import RootStore from "../../store/root";
 import { Catalog } from "../../components";
 import ReactMarkdown from "react-markdown";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import SyntaxHighlighter from "react-syntax-highlighter";
 import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw"; // 支持html
