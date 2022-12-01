@@ -240,33 +240,20 @@ const copyCode = (text: any) => {
 };
 
 // 针对markdown标签里代码块的处理需要调整
-<ReactMarkdown
-  children={content}
-  className="markdown-body"
-  remarkPlugins={[remarkGfm]}
-  rehypePlugins={[rehypeRaw]}
-  components={{
-    code({ node, inline, className, children, ...props }) {
-      const match = /language-(\w+)/.exec(className || "");
-      return !inline && match ? (
-        <div className="code-content">
-          <div className="copy" onClick={() => copyCode(children[0])}>
-            复制代码
-          </div>
-          <SyntaxHighlighter
-            children={String(children).replace(/\n$/, "")}
-            style={atomOneDark}
-            language={match[1]}
-            PreTag="div"
-            {...props}
-          />
-        </div>
-      ) : (
-        <code className={className} {...props}>
-          {children}
-        </code>
-      );
-    },
-  }}
-/>
+...
+  return !inline && match ? (
+    <div className="code-content">
+      <div className="copy" onClick={() => copyCode(children[0])}>
+        复制代码
+      </div>
+      <SyntaxHighlighter
+        children={String(children).replace(/\n$/, "")}
+        style={atomOneDark}
+        language={match[1]}
+        PreTag="div"
+        {...props}
+      />
+    </div>
+  )
+...
 ```
