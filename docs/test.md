@@ -92,7 +92,7 @@ const markdown = `Just a link <br/> <strong>Just a link</strong>`;
 ```
 
 - react-syntax-highlighter <br/>
-对md文件中的代码块样式进行调整及美观优化，提供不同的主题色以供选择
+对md文件中的代码块样式进行调整及美观优化，提供不同的主题色以供选择。
 ```javascript
 import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter'
 import {dark} from 'react-syntax-highlighter/dist/esm/styles/prism'
@@ -103,28 +103,24 @@ Here is some JavaScript code:
 console.log('It works!')
 ~~~
 `
-
-<ReactMarkdown
-  children={markdown}
-  components={{
-    code({node, inline, className, children, ...props}) {
-      const match = /language-(\w+)/.exec(className || '')
-      return !inline && match ? (
-        <SyntaxHighlighter
-          children={String(children).replace(/\n$/, '')}
-          style={dark}
-          language={match[1]}
-          PreTag="div"
-          {...props}
-        />
-      ) : (
-        <code className={className} {...props}>
-          {children}
-        </code>
-      )
-    }
-  }}
-/>
+// 主要对ReactMarkdown标签中components属性的内容进行调整
+code({node, inline, className, children, ...props}) {
+  const match = /language-(\w+)/.exec(className || '')
+  return !inline && match ? (
+    // 当匹配到代码块时
+    <SyntaxHighlighter
+      children={String(children).replace(/\n$/, '')}
+      style={dark}
+      language={match[1]}
+      PreTag="div"
+      {...props}
+    />
+  ) : (
+    <code className={className} {...props}>
+      {children}
+    </code>
+  )
+}
 ```
 
 #### 目录生成及跳转
