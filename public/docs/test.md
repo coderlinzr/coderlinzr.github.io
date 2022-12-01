@@ -220,6 +220,8 @@ const safeScrollTo = (element: any, top: number, smooth: boolean = true) => {
 ```
 
 #### 内容复制
+navigator.clipboard是一个只读属性，该属性返回一个可以读写剪切板内容的 Clipboard 对象。在 Web 应用中，Clipboard API 可用于实现剪切、复制、粘贴的功能。
+所有 Clipboard API 的方法都是异步的；它们返回一个 Promise 对象，在剪贴板访问完成后被兑现。
 ```javascript
 // 将字符粘贴到剪切板的操作
 const copyCode = (text: any) => {

@@ -39,6 +39,8 @@ const Blog = () => {
 
   // 复制代码
   const copyCode = (text: any) => {
+    // 添加后缀
+    text += `作者：linzr\n链接： https://coderlinzr.github.io/ \n 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。\n`
     navigator.clipboard.writeText(text).then((res) => {
       // let element = document.getElementById(text);
       // setOpacity(element);
