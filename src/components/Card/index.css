@@ -49,7 +49,7 @@
 }
 
 .card-box:hover .show-icon {
-  background-color: #f6121e;
+  background-color: #f6121e !important;
 }
 
 .javascript-tag {

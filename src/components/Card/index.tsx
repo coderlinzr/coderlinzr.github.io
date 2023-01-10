@@ -2,13 +2,19 @@
  * @Author: Zhuoran Lin
  * @Date: 2022-07-28 18:14:31
  * @LastEditors: Zhuoran Lin
- * @LastEditTime: 2022-11-14 14:17:17
+ * @LastEditTime: 2023-01-10 15:16:51
  * @Description:
  */
 import './index.css';
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import RootStore from '../../store/root';
+
+const TAGS_COLOR: any = {
+  JavaScript: '#f5dd1e',
+  TypeScript: '#166cba',
+  default: '#fefefe'
+};
 
 const Card = (props: any) => {
   const navigate = useNavigate();
@@ -24,7 +30,7 @@ const Card = (props: any) => {
         navigate(`/blog/${index}`);
       }}
     >
-      <div className={tag === 'JavaScript' ? 'show-icon javascript-tag' : 'show-icon'}>
+      <div className="show-icon" style={{backgroundColor: Object.keys(TAGS_COLOR).indexOf(tag) === -1 ? TAGS_COLOR.default : TAGS_COLOR[tag]}}>
         <strong>{tag}</strong>
       </div>
       <div className="main-content">

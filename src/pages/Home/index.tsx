@@ -3,10 +3,10 @@ import { CONTENTS } from "../../utils/constants";
 import { Card } from "../../components";
 
 const Home = () => {
-
+  
   return (
     <div className="homepage">
-      {CONTENTS.map((item: any, index: number) => {
+      {CONTENTS.sort((a: any, b: any) => new Date(b.date) > new Date(a.date) ? 1 : -1).map((item: any, index: number) => {
         return (
           <Card
             title={item.title}
