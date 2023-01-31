@@ -6,6 +6,8 @@
   border: 1px solid #777d841a;
   border-radius: 4px;
   background-color: #fff;
+  overflow: hidden;
+  overflow-y: auto;
 }
 
 .catalog-title {
