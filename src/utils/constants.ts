@@ -17,5 +17,11 @@ export const CONTENTS: Array<Content | {}> = [
     date: "2023-01-09",
     tag: "TypeScript",
     path: "/docs/blog0002.md",
+  },
+  {
+    title: "深入理解ts的infer",
+    date: "2023-01-30",
+    tag: "TypeScript",
+    path: "/docs/blog0003.md",
   }
 ];
