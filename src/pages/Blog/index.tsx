@@ -1,9 +1,9 @@
 import "github-markdown-css";
 import "./index.css";
 
-import { useContext, useState } from "react";
-import { useMount } from "react-use";
-import RootStore from "../../store/root";
+import { useEffect, useState } from "react";
+import { observer } from 'mobx-react';
+import { useLocation } from 'react-router-dom';
 import { Catalog } from "../../components";
 import ReactMarkdown from "react-markdown";
 import SyntaxHighlighter from "react-syntax-highlighter";
@@ -11,8 +11,9 @@ import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw"; // 支持html
 
-const Blog = () => {
-  const root = useContext(RootStore);
+const Blog = observer(() => {
+  const location = useLocation();
+  const currentPath = String(location.pathname);
   // 存储博文内容
   const [content, setContent] = useState<string>("");
 
@@ -22,7 +23,14 @@ const Blog = () => {
     setContent(content);
   };
 
-  useMount(() => {
+  useEffect(() => {
+    let nowBlogPath = `/docs/blog${currentPath.slice(6)}.md`;
+    if (nowBlogPath !== localStorage.getItem("blogUrl")) {
+      localStorage.setItem("blogUrl", nowBlogPath);
+    }
+  }, [currentPath]);
+
+  useEffect(() => {
     // var xmlhttp = new XMLHttpRequest();
 
     // xmlhttp.onreadystatechange = function () {
@@ -34,8 +42,8 @@ const Blog = () => {
     // // 文件目录在 public/static/test.md 这里不需要写 public 因为打包之后没有此目录。
     // xmlhttp.open("GET", "/docs/test.md", true);
     // xmlhttp.send();
-    changeCurrentArticle(root.blogUrl || localStorage.getItem("blogUrl"));
-  });
+    changeCurrentArticle(localStorage.getItem("blogUrl"));
+  }, []);  
 
   // 复制代码
   const copyCode = (text: any) => {
@@ -98,6 +106,6 @@ const Blog = () => {
       </div>
     </div>
   );
-};
+});
 
 export default Blog;

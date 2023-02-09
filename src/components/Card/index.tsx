@@ -1,31 +1,20 @@
-/*
- * @Author: Zhuoran Lin
- * @Date: 2022-07-28 18:14:31
- * @LastEditors: Zhuoran Lin
- * @LastEditTime: 2023-01-10 15:16:51
- * @Description:
- */
 import './index.css';
-import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import RootStore from '../../store/root';
 
 const TAGS_COLOR: any = {
   JavaScript: '#f5dd1e',
   TypeScript: '#166cba',
-  default: '#fefefe'
+  default: '#eeeff1'
 };
 
 const Card = (props: any) => {
   const navigate = useNavigate();
-  const root = useContext(RootStore);
   const { title, date, tag, path, index } = props;
 
   return (
     <div
       className="card-box"
       onClick={() => {
-        root.blogUrl = path;
         localStorage.setItem('blogUrl', path);
         navigate(`/blog/${index}`);
       }}
